@@ -1,20 +1,12 @@
 import TerminalComponent from '../components/Terminal';
 import '../Styles/Mainpage.css';
-
+import Headder from "../components/header"
+import Footer from '../components/footer';
 const Mainpage = ({ handleBack, handleNext }) => {
     return (
-        <div>
-            <div className="Header">
-                {/* {name}  {rollNo} {Level}       */}
-                <div>
-                    Shashwath 7376232IT257 Level 1
-                </div>
-                <div className="Check">
-                        <a href="#" className="m-2 inline-flex items-center justify-center rounded-xl border border-transparent bg-blue-600 px-5 py-3 font-medium text-white hover:bg-blue-700 w-32"> Check </a>
-                        <a href="#" className="m-2 inline-flex items-center justify-center rounded-xl border border-transparent bg-green-600 px-5 py-3 font-medium text-white hover:bg-blue-700 w-32"> Submit </a>
-                    </div>
-            </div>
-
+        <div>                         
+            <Headder/>          
+                
             <div className="Content">
                 <div className="Task-View">
 
@@ -42,7 +34,7 @@ const Mainpage = ({ handleBack, handleNext }) => {
                     <TerminalComponent />
                 </div>
             </div >
-
+            <Footer/>
         </div >
     )
 }
