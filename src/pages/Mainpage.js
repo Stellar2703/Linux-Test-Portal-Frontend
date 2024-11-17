@@ -1,5 +1,6 @@
 import TerminalComponent from '../components/Terminal';
 import '../Styles/Mainpage.css';
+
 const Mainpage = ({ handleBack, handleNext }) => {
     return (
         <div>
@@ -39,7 +40,6 @@ const Mainpage = ({ handleBack, handleNext }) => {
                 </div>
                 <div className="pt-4">
                     <TerminalComponent />
-                    
                 </div>
             </div >
 
