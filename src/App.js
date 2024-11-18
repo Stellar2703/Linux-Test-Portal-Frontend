@@ -5,11 +5,13 @@ import LoginPage from './pages/LoginPage';
 import Mainpage from './pages/Mainpage';
 import BookingPage from './pages/BookingPage';
 import Test from './pages/Testpage';
+import { UserProvider } from './components/UserContext';
 
 
 function App() {
   return (
     <div className="App">
+   <UserProvider>
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
@@ -19,6 +21,7 @@ function App() {
         <Route path="*" element={<h1>Dont Fool Around </h1>}/>
       </Routes>
     </Router>
+    </UserProvider>
     </div>
 
   );

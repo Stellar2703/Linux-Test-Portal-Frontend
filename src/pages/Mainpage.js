@@ -1,10 +1,17 @@
 import TerminalComponent from '../components/Terminal';
 import '../Styles/Mainpage.css';
+import React, { useContext } from 'react';
+import { UserContext } from '../components/UserContext';
+
+
 
 const Mainpage = ({ handleBack, handleNext }) => {
+    // const { userData } = useContext(UserContext);
     return (
         <div>
             <div className="Header">
+            
+            {/* <h1>Welcome, {userData.student.name}</h1> */}
                 {/* {name}  {rollNo} {Level}       */}
                 <div>
                     Shashwath 7376232IT257 Level 1
@@ -21,7 +28,7 @@ const Mainpage = ({ handleBack, handleNext }) => {
                     <div className="Task">
                         <div className="Task-Num">
                             {/* {Task} */}
-                            Task 1:
+                            {/* Task 1:{userData.student.name} */}
                         </div>
                         <div className="Question">
                             {/* {Question} */}
@@ -45,6 +52,6 @@ const Mainpage = ({ handleBack, handleNext }) => {
 
         </div >
     )
-}
+};
 
 export default Mainpage;
