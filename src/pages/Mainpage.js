@@ -3,8 +3,11 @@ import '../Styles/Mainpage.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import TestCasesCard from '../components/output';
+import React, { useContext } from 'react';
+import { UserContext } from '../components/UserContext';
 
 const Mainpage = ({ handleBack, handleNext }) => {
+    // const { userData } = useContext(UserContext);
     return (
         <div className="flex flex-col min-h-screen">
 
@@ -38,6 +41,8 @@ const Mainpage = ({ handleBack, handleNext }) => {
                                     </button>
                                 </div>
                             </div>
+=======
+        
                         </div>
                     </div>
 
@@ -61,6 +66,7 @@ const Mainpage = ({ handleBack, handleNext }) => {
             <Footer />
         </div>
     );
+
 };
 
 export default Mainpage;
