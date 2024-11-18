@@ -7,7 +7,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../components/UserContext';
 
 const Mainpage = ({ handleBack, handleNext }) => {
-    // const { userData } = useContext(UserContext);
+    const { userData } = useContext(UserContext);
     return (
         <div className="flex flex-col min-h-screen">
 
@@ -18,7 +18,7 @@ const Mainpage = ({ handleBack, handleNext }) => {
                     <div className="Task-View w-full">
                         <div className="Task">
                             <div className="Task-Num bg-indigo-300 text-gray-800 font-semibold py-3 px-4 rounded-t-xl">
-                                Task 1:
+                                Task 1: {userData.student.name}
                             </div>
                             <div className="Question bg-white p-4 rounded-b-xl text-gray-700">
                                 <p>
@@ -41,7 +41,6 @@ const Mainpage = ({ handleBack, handleNext }) => {
                                     </button>
                                 </div>
                             </div>
-=======
         
                         </div>
                     </div>

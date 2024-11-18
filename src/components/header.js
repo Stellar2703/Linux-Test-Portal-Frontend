@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CountdownTimer from "./timmer";
+import { useContext } from 'react';
+import { UserContext } from '../components/UserContext';
 
 function Header() {
   const [activePage, setActivePage] = useState(1);
   const targetDate = new Date("2024-12-31T23:59:59");
-
+  const { userData } = useContext(UserContext);
   const handlePageClick = (pageNumber) => {
     setActivePage(pageNumber);
   };
@@ -18,6 +20,9 @@ function Header() {
 
         {/* Centered Pagination */}
         <div className="flex justify-center flex-grow">
+         <h1>{userData.student.name}</h1>
+         <h1>{userData.student.level}</h1>
+         <h1>{userData.student.register_number}</h1>
           <ul className="flex items-center space-x-2">
             {/* Previous Button */}
             <li>
