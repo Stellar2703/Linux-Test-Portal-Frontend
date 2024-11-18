@@ -41,18 +41,18 @@ const Mainpage = ({ handleBack, handleNext }) => {
                                     </button>
                                 </div>
                             </div>
-=======
+
         
                         </div>
                     </div>
 
                     
                     {/* Terminal Section (Ensure this is full-width and above TestCasesCard) */}
-                    <div className="right-side">
-                    <div className="pt-6">
+                    <div className="right-side ">
+                    <div className="pt-2.5 flex-grow overflow-y-auto z-0">
                         <TerminalComponent />
                     </div>
-                    <div className="mt-6">
+                    <div className="border">
                     <TestCasesCard />
                     </div>
                     {/* Output Card Section (Test Cases Card) should be below the terminal */}

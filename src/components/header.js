@@ -11,7 +11,7 @@ function Header() {
   };
 
   return (
-    <header className="sticky top-0 shadow-md py-4 px-5 bg-white">
+    <header className="sticky top-0 shadow-md py-3 px-5 bg-white">
       <nav aria-label="Page navigation" className="flex items-center justify-between">
         {/* Placeholder div to balance layout */}
         <div className="w-1/3"></div>
@@ -23,7 +23,7 @@ function Header() {
             <li>
               <button
                 onClick={() => handlePageClick(activePage > 1 ? activePage - 1 : 1)}
-                className="flex items-center justify-center px-3 h-9 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-300"
+                className="flex items-center justify-center w-7 h-7 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-300"
                 aria-label="Previous"
               >
                 <FaChevronLeft />
@@ -35,7 +35,7 @@ function Header() {
               <li key={number}>
                 <button
                   onClick={() => handlePageClick(number)}
-                  className={`w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-300 ${
+                  className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-300 ${
                     activePage === number
                       ? "text-white bg-blue-600 shadow-md hover:bg-blue-700"
                       : "text-gray-500 bg-gray-200 hover:bg-gray-200"
@@ -51,7 +51,7 @@ function Header() {
             <li>
               <button
                 onClick={() => handlePageClick(activePage < 7 ? activePage + 1 : 7)}
-                className="flex items-center justify-center px-3 h-9 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-300"
+                className="flex items-center justify-center w-7 h-7 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-300"
                 aria-label="Next"
               >
                 <FaChevronRight />
