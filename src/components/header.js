@@ -4,69 +4,64 @@ import CountdownTimer from "./timmer";
 
 function Header() {
   const [activePage, setActivePage] = useState(1);
-  const targetDate = new Date('2024-12-31T23:59:59');
+  const targetDate = new Date("2024-12-31T23:59:59");
 
-  // Handler for clicking a page number
   const handlePageClick = (pageNumber) => {
     setActivePage(pageNumber);
   };
 
   return (
-    <header className="sticky top-0 shadow-md py-6 px-5 bg-white">
-      {/* Container for Timer and Pagination */}
-      <nav
-        aria-label="Page navigation example"
-        className="flex items-center justify-between"
-      >
-        {/* Flex Container to Center Pagination */}
-        <div className="flex items-center justify-center flex-grow">
-          <ul className="flex items-center space-x-3 h-9 text-sm">
+    <header className="sticky top-0 shadow-md py-4 px-5 bg-white">
+      <nav aria-label="Page navigation" className="flex items-center justify-between">
+        {/* Placeholder div to balance layout */}
+        <div className="w-1/3"></div>
+
+        {/* Centered Pagination */}
+        <div className="flex justify-center flex-grow">
+          <ul className="flex items-center space-x-2">
             {/* Previous Button */}
             <li>
-              <a
-                href="#"
+              <button
                 onClick={() => handlePageClick(activePage > 1 ? activePage - 1 : 1)}
-                className="flex items-center justify-center px-3 h-9 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-200 transition-colors duration-300 ease-in-out"
+                className="flex items-center justify-center px-3 h-9 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-300"
                 aria-label="Previous"
               >
                 <FaChevronLeft />
-              </a>
+              </button>
             </li>
 
             {/* Page Numbers */}
             {[1, 2, 3, 4, 5, 6, 7].map((number) => (
               <li key={number}>
-                <a
-                  href="#"
+                <button
                   onClick={() => handlePageClick(number)}
-                  className={`flex items-center justify-center w-11 h-11 rounded-lg transition-all duration-300 ease-in-out ${
+                  className={`w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-300 ${
                     activePage === number
                       ? "text-white bg-blue-600 shadow-md hover:bg-blue-700"
-                      : "text-gray-500 bg-gray-100 hover:bg-gray-200 dark:bg-gray-300 dark:text-black dark:hover:bg-gray-400"
+                      : "text-gray-500 bg-gray-200 hover:bg-gray-200"
                   }`}
                   aria-current={activePage === number ? "page" : undefined}
                 >
                   {number}
-                </a>
+                </button>
               </li>
             ))}
 
             {/* Next Button */}
             <li>
-              <a
-                href="#"
+              <button
                 onClick={() => handlePageClick(activePage < 7 ? activePage + 1 : 7)}
-                className="flex items-center justify-center px-3 h-9 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-200 transition-colors duration-300 ease-in-out"
+                className="flex items-center justify-center px-3 h-9 text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-300"
                 aria-label="Next"
               >
                 <FaChevronRight />
-              </a>
+              </button>
             </li>
           </ul>
         </div>
 
         {/* Countdown Timer on the Right */}
-        <div className="ml-6">
+        <div className="w-1/3 flex justify-end">
           <CountdownTimer targetDate={targetDate} />
         </div>
       </nav>

@@ -14,16 +14,16 @@
     width: 100%;
     padding: 2vh 1vw;
     text-align: justify;
-    background-color: #f5f5f5;
+    background-color: #dfdfdf53;
     margin: 10px;
     margin-left: 16px;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
     border-radius: 10px;
-    height: 90vh;
+    height: 60vh;
     overflow: auto;
-
+    /* border: 2px solid red; */
 }
 .Task-Num{
     background-color: rgb(176, 176, 227);
@@ -31,4 +31,8 @@
 
 .Content{
     display: flex;
+}
+
+body {
+    background-color: #ffffff;
 }

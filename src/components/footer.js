@@ -1,11 +1,33 @@
-function Footer (){
-    return (
-        <footer className="sticky bottom-0 shadow-2xl py-10 px-4 bg-gray-200">
-            <div className="justify-start">
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">next</button>
-            </div>
-        </footer>
-    )
+import React from "react";
+
+function Footer() {
+  return (
+    <footer className="sticky bottom shadow-2xl py-7 px-8 bg-gray-300 text-white flex items-center justify-between">
+    
+      <div>
+        <button
+          type="button"
+          className="bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-7 py-2.5 focus:outline-none"
+        >
+          Finish
+        </button>
+      </div>
+
+      <div className="text-center text-blue-400">
+        Student ID: 7376231CS345
+      </div>
+
+      {/* Right Section: Skip and Submit Buttons */}
+      <div className="flex items-center space-x-4">
+        <button
+          type="button"
+          className="bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-7 py-2.5 focus:outline-none"
+        >
+          Next
+        </button>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;
