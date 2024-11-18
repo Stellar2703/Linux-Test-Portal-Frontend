@@ -1,99 +1,101 @@
-// import React, { useEffect, useState } from 'react';
+// import React, { useState } from 'react';
 // import axios from 'axios';
 
-// const TaskList = () => {
-//   const [tasks, setTasks] = useState([]);
+// const Test = () => {
+//     const [registerNumber, setRegisterNumber] = useState('');
+//     const [userData, setUserData] = useState(null);
 
-//   useEffect(() => {
-//     const fetchTasks = async () => {
-//       try {
-//         const response = await axios.get('http://localhost:4000/api/tasks');
-//         setTasks(response.data);
-//       } catch (error) {
-//         console.error('Error fetching tasks:', error);
-//       }
+//     const handleSubmit = async (e) => {
+//         e.preventDefault();
+//         try {
+//             const response = await axios.post('http://localhost:4000/api/login', { register_number: registerNumber });
+//             setUserData(response.data);
+//         } catch (error) {
+//             console.error(error);
+//             alert(error.response?.data?.message || 'Error fetching data');
+//         }
 //     };
 
-//     fetchTasks();
-//   }, []);
+//     return (
+//         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+//             <h1>Linux Test Portal</h1>
+//             <form onSubmit={handleSubmit}>
+//                 <input
+//                     type="text"
+//                     placeholder="Enter Register Number"
+//                     value={registerNumber}
+//                     onChange={(e) => setRegisterNumber(e.target.value)}
+//                     required
+//                     style={{ padding: '10px', marginRight: '10px' }}
+//                 />
+//                 <button type="submit" style={{ padding: '10px' }}>Submit</button>
+//             </form>
 
-//   return (
-//     <div>
-//       <h1>Task List</h1>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>ID</th>
-//             <th>Level</th>
-//             <th>Task 1</th>
-//             <th>Task 2</th>
-//             {/* Add more columns as needed */}
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {tasks.map(task => (
-//             <tr key={task.id}>
-//               <td>{task.id}</td>
-//               <td>{task.level}</td>
-//               <td>{task.task1}</td>
-//               <td>{task.task2}</td>
-//               {/* Add more tasks */}
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
+//             {userData && (
+//                 <div style={{ marginTop: '20px' }}>
+//                     <h3>Student Details</h3>
+//                     <p>Name: {userData.student.name}</p>
+//                     <p>Register Number: {userData.student.register_number}</p>
+//                     <p>Level: {userData.student.level}</p>
+//                     <p>IP: {userData.ip}</p>
+
+//                     <h3>System Details</h3>
+//                     <p>Username: {userData.systemUser.username}</p>
+//                     <p>Password: {userData.systemUser.password}</p>
+
+//                     <h3>Tasks</h3>
+//                     <ul>
+//                         {Object.entries(userData.tasks).map(([key, value]) => (
+//                             key.startsWith('task') && value && <li key={key}>{value}</li>
+//                         ))}
+//                     </ul>
+//                 </div>
+//             )}
+//         </div>
+//     );
 // };
 
-// export default TaskList;
+// export default Test;
+    import React, { useState, useContext } from 'react';
+    import axios from 'axios';
+    import { UserContext } from '../components/UserContext';
+    import { useNavigate } from 'react-router-dom';
 
+    const Test = () => {
+        const [registerNumber, setRegisterNumber] = useState('');
+        const { setUserData } = useContext(UserContext);
+        const navigate = useNavigate();     
 
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            try {
+                const response = await axios.post('http://localhost:4000/api/login', { register_number: registerNumber });
+                console.log('Response Data:', response.data); // Debugging
+                setUserData(response.data); // Save data in context
+                navigate('/main'); // Navigate to Mainpage
+            } catch (error) {
+                console.error(error);
+                alert(error.response?.data?.message || 'Error fetching data');
+            }
+        };
+        
 
-import React, { useState } from 'react';
-import axios from 'axios';
+        return (
+            <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+                <h1>Linux Test Portal</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="Enter Register Number"
+                        value={registerNumber}
+                        onChange={(e) => setRegisterNumber(e.target.value)}
+                        required
+                        style={{ padding: '10px', marginRight: '10px' }}
+                    />
+                    <button type="submit" style={{ padding: '10px' }}>Submit</button>
+                </form>
+            </div>
+        );
+    };
 
-const Login = () => {
-  const [registerNumber, setRegisterNumber] = useState(1);
-  const [response, setResponse] = useState(null);
-
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post('http://localhost:4000/api/login', {
-        register_number: registerNumber,
-      });
-      setResponse(res.data);
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
-  };
-
-  return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter Register Number"
-        value={registerNumber}
-        onChange={(e) => setRegisterNumber(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      {response && (
-        <div>
-          <h3>Student Name: {response.student.name}</h3>
-          <h4>Level: {response.student.level}</h4>
-          <h4>IP: {response.system.ip}</h4>
-          <h4>System User: {response.system.user.username}</h4>
-          <h4>Password: {response.system.user.password}</h4>
-          <h4>Tasks:</h4>
-          <ul>
-            {Object.entries(response.tasks).map(([key, value]) =>
-              key.startsWith('task') ? <li key={key}>{value}</li> : null
-            )}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default Login;
+    export default Test;
