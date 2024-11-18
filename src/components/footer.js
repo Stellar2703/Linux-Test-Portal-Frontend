@@ -13,7 +13,7 @@ function Footer() {
         </button>
       </div>
 
-      <div className="text-center text-blue-400">
+      <div className="text-center text-black font-semibold">
         Student ID: 7376231CS345
       </div>
 
