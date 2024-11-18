@@ -12,7 +12,7 @@ const Mainpage = ({ handleBack, handleNext }) => {
             <div className="flex-grow">
                 <div className="Content">
                     {/* Task View Section */}
-                    <div className="Task-View w-full">
+                    <div className="Task-View w-full ">
                         <div className="Task">
                             <div className="Task-Num bg-indigo-300 text-gray-800 font-semibold py-3 px-4 rounded-t-xl">
                                 Task 1:

@@ -22,7 +22,8 @@
     /* justify-content: space-between; */
     border-radius: 10px;
     height: 60vh;
-    overflow: auto;
+    overflow: none;
+    
     /* border: 2px solid red; */
 }
 .Task-Num{
