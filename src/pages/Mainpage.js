@@ -7,10 +7,8 @@ import TestCasesCard from '../components/output';
 const Mainpage = ({ handleBack, handleNext }) => {
     return (
         <div className="flex flex-col min-h-screen">
-            
-            <Header />
 
-            {/* Main Content Area */}
+            <Header />
             <div className="flex-grow">
                 <div className="Content">
                     {/* Task View Section */}
@@ -43,16 +41,20 @@ const Mainpage = ({ handleBack, handleNext }) => {
                         </div>
                     </div>
 
+                    
                     {/* Terminal Section (Ensure this is full-width and above TestCasesCard) */}
+                    <div className="right-side">
                     <div className="pt-6">
                         <TerminalComponent />
                     </div>
-
-                    {/* Output Card Section (Test Cases Card) should be below the terminal */}
                     <div className="mt-6">
-                        <TestCasesCard />
+                    <TestCasesCard />
                     </div>
+                    {/* Output Card Section (Test Cases Card) should be below the terminal */}
+
                 </div>
+                </div>
+                
             </div>
 
             {/* Footer Component */}
