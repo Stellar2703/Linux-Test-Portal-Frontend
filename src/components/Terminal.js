@@ -148,15 +148,18 @@ const TerminalComponent = () => {
   useEffect(() => {
     xtermRef.current = new Terminal({
       cursorBlink: true,
+      cursorStyle: 'bar', // Bar-style cursor
       cols: 80,
-      rows: 34,
+      rows: 30,
       theme: {
+        
         background: '#1e1e1e', // Dark background
-        foreground: '#dcdcdc', // Light gray text
+        foreground: '#f5f5f5', // Light gray text
         cursor: '#00ff00', // Green cursor
       },
-      fontSize: 14, // Slightly larger font
-      fontFamily: `'Fira Code', 'Courier New', monospace`, // Stylish monospace font
+      fontSize: 17, // Slightly larger font
+      fontWeight: '500',
+      fontFamily: `'JetBrains Mono', 'Consolas', 'Courier New', monospace`, // Stylish monospace font
     });
     xtermRef.current.open(terminalRef.current);
 

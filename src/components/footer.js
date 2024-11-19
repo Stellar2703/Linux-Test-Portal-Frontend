@@ -53,14 +53,14 @@ function Footer() {
       </div>
 
       {/* Right Section: Placeholder Buttons */}
-      <div className="flex items-center space-x-4">
+      {/* <div className="flex items-center space-x-4">
         <button
           type="button"
           className="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-400 font-medium rounded-lg text-sm px-6 py-2 shadow-md"
         >
           Skip
         </button>
-      </div>
+      </div> */}
     </footer>
   );
 }
