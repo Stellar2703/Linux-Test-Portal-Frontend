@@ -13,7 +13,7 @@ function Header() {
   };
 
   return (
-    <header className="sticky top-0 shadow-md py-4 px-5 bg-white">
+    <header className="sticky top-0 shadow-md py-4 px-5 bg-white z-10">
       <nav aria-label="Page navigation" className="flex items-center justify-between">
         {/* Placeholder div to balance layout */}
         <div className="w-1/3"></div>

@@ -19,15 +19,16 @@ function Footer() {
 
       {/* Right Section: Skip and Submit Buttons */}
       <div className="flex items-center space-x-4">
-        <button
+        {/* <button
           type="button"
           className="bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-7 py-2.5 focus:outline-none"
         >
           Next
-        </button>
+        </button> */}
       </div>
     </footer>
   );
 }
 
 export default Footer;
+

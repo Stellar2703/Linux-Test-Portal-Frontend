@@ -129,7 +129,7 @@ const TerminalComponent = () => {
     };
   }, []);
 
-  return <div ref={terminalRef} style={{ width: '100%', height: '500px' }} />;
+  return <div ref={terminalRef}/>;
 };
 
 export default TerminalComponent;
