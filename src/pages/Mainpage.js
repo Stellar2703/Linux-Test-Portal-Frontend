@@ -1,72 +1,201 @@
-import TerminalComponent from '../components/Terminal';
-import '../Styles/Mainpage.css';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import TestCasesCard from '../components/output';
-import React, { useContext } from 'react';
-import { UserContext } from '../components/UserContext';
 
-const Mainpage = ({ handleBack, handleNext }) => {
-    // const { userData } = useContext(UserContext);
-    return (
-        <div className="flex flex-col min-h-screen">
+// import React, { useContext, useState } from "react";
+// import TerminalComponent from "../components/Terminal";
+// import "../Styles/Mainpage.css";
+// import Header from "../components/header";
+// import Footer from "../components/footer";
+// import TestCasesCard from "../components/output";
+// import { UserContext } from "../components/UserContext";
 
-            <Header />
-            <div className="flex-grow">
-                <div className="Content">
-                    {/* Task View Section */}
-                    <div className="Task-View w-full ">
-                        <div className="Task">
-                            <div className="Task-Num bg-indigo-300 text-gray-800 font-semibold py-3 px-4 rounded-t-xl">
-                                Task 1:
-                            </div>
-                            <div className="Question bg-white p-4 rounded-b-xl text-gray-700">
-                                <p>
-                                    You are a system administrator tasked with organizing a project directory for a new team.
-                                    The directory{' '}
-                                    <code className="bg-gray-200 px-1 rounded">
-                                        /home/student/project
-                                    </code>{' '}
-                                    contains several folders and files that have accumulated over time.
-                                    The team needs an organized summary of the directory structure to identify how many folders and files are present.
-                                    Your task is to list the contents of the directory and provide the exact count of folders and files within it.
-                                </p>
-                                {/* Submit Button */}
-                                <div className="mt-4 flex justify-end">
-                                    <button
-                                        type="button"
-                                        className="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
-                                    >
-                                        Submit
-                                    </button>
-                                </div>
-                            </div>
+// const Mainpage = () => {
+//     const [currentIndex, setCurrentIndex] = useState(0);
 
-        
-                        </div>
-                    </div>
+//     const { userData } = useContext(UserContext);
 
-                    
-                    {/* Terminal Section (Ensure this is full-width and above TestCasesCard) */}
-                    <div className="right-side ">
-                    <div className="pt-2.5 flex-grow overflow-y-auto z-0">
-                        <TerminalComponent />
-                    </div>
-                    <div className="border">
-                    <TestCasesCard />
-                    </div>
-                    {/* Output Card Section (Test Cases Card) should be below the terminal */}
+//     // Extract tasks from userData and convert them into an array
+//     const taskArray = Object.entries(userData.tasks)
+//         .filter(([key]) => key.startsWith("task")) // Include only keys that start with "task"
+//         .map(([key, value]) => ({
+//             id: key,
+//             description: value,
+//         }));
 
-                </div>
-                </div>
-                
+//     // Handle Previous Button Click
+//     const handlePrevious = () => {
+//         if (currentIndex > 0) {
+//             setCurrentIndex((prevIndex) => prevIndex - 1);
+//         }
+//     };
+
+//     // Handle Next Button Click
+//     const handleNext = () => {
+//         if (currentIndex < taskArray.length - 1) {
+//             setCurrentIndex((prevIndex) => prevIndex + 1);
+//         }
+//     };
+
+//     return (
+//         <div className="flex flex-col min-h-screen ">
+//             <Header />
+
+//             <div className="bg-grey-500 flex-grow flex ">
+//                 {/* Task Section */}
+//                 <div className="flex-1 flex flex-col px-4 py-6 bg-gray-100 " >
+//                     <div className="Task">
+//                         <div className="flex justify-between items-center Task-Num bg-indigo-300 text-gray-800 font-semibold py-3 px-4 rounded-t-xl">
+//                             <span>{taskArray[currentIndex].id.toUpperCase()}</span>
+//                             <div className="flex space-x-2">
+//                                 <span className="bg-red-500 w-3 h-3 rounded-full"></span>
+//                                 <span className="bg-yellow-500 w-3 h-3 rounded-full"></span>
+//                                 <span className="bg-green-500 w-3 h-3 rounded-full"></span>
+//                             </div>
+//                         </div>
+//                         <div className="Question bg-white p-4 rounded-b-xl text-gray-700">
+//                             <p>{taskArray[currentIndex].description}</p>
+
+//                             <div className="buttons flex justify-between mt-4">
+//                                 {/* Previous Button */}
+//                                 <button
+//                                     onClick={handlePrevious}
+//                                     disabled={currentIndex === 0}
+//                                     className={`px-4 py-2 rounded-lg ${currentIndex === 0
+//                                         ? "bg-gray-300 cursor-not-allowed"
+//                                         : "bg-blue-500 hover:bg-blue-600 text-white"
+//                                         }`}
+//                                 >
+//                                     Previous
+//                                 </button>
+
+//                                 {/* Next Button */}
+//                                 <button
+//                                     onClick={handleNext}
+//                                     disabled={currentIndex === taskArray.length - 1}
+//                                     className={`px-4 py-2 rounded-lg ${currentIndex === taskArray.length - 1
+//                                         ? "bg-gray-300 cursor-not-allowed"
+//                                         : "bg-blue-500 hover:bg-blue-600 text-white"
+//                                         }`}
+//                                 >
+//                                     Next
+//                                 </button>
+//                             </div>
+//                         </div>
+//                     </div>
+//                     <div className="mt-6">
+//                         <TestCasesCard />
+//                     </div>
+//                 </div>
+
+//                 {/* Terminal Section */}
+//                 <div className="flex-1 flex flex-col px-4 py-6">
+//                     <TerminalComponent />
+//                 </div>
+//             </div>
+
+//             <Footer />
+//         </div>
+//     );
+// };
+
+// export default Mainpage;
+
+import React, { useContext, useState } from "react";
+import TerminalComponent from "../components/Terminal";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import TestCasesCard from "../components/output";
+import { UserContext } from "../components/UserContext";
+
+const Mainpage = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const { userData } = useContext(UserContext);
+
+  // Extract tasks from userData and convert them into an array
+  const taskArray = Object.entries(userData.tasks)
+    .filter(([key]) => key.startsWith("task"))
+    .map(([key, value]) => ({
+      id: key,
+      description: value,
+    }));
+
+  // Handle Previous Button Click
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
+    }
+  };
+
+  // Handle Next Button Click
+  const handleNext = () => {
+    if (currentIndex < taskArray.length - 1) {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
+      <Header />
+
+      <div className="flex-grow flex">
+        {/* Task Section */}
+        <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800 border-r border-gray-700">
+          <div className="Task">
+            <div className="flex justify-between items-center Task-Num bg-gray-700 text-gray-200 font-semibold py-3 px-4 rounded-t-lg">
+              <span className="text-2xl font-bold">
+                {taskArray[currentIndex].id.toUpperCase()}
+              </span>
+              <div className="flex space-x-2">
+                <span className="bg-red-500 w-3 h-3 rounded-full"></span>
+                <span className="bg-yellow-500 w-3 h-3 rounded-full"></span>
+                <span className="bg-green-500 w-3 h-3 rounded-full"></span>
+              </div>
+
             </div>
+            <div className="Question bg-gray-700 p-4 rounded-b-lg text-gray-300 shadow">
+              <p>{taskArray[currentIndex].description}</p>
 
-            {/* Footer Component */}
-            <Footer />
+              <div className="buttons flex justify-between mt-4">
+                {/* Previous Button */}
+                <button
+                  onClick={handlePrevious}
+                  disabled={currentIndex === 0}
+                  className={`px-4 py-2 rounded-lg ${
+                    currentIndex === 0
+                      ? "bg-gray-600 cursor-not-allowed text-gray-400"
+                      : "bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                  }`}
+                >
+                  Previous
+                </button>
+
+                {/* Next Button */}
+                <button
+                  onClick={handleNext}
+                  disabled={currentIndex === taskArray.length - 1}
+                  className={`px-4 py-2 rounded-lg ${
+                    currentIndex === taskArray.length - 1
+                      ? "bg-gray-600 cursor-not-allowed text-gray-400"
+                      : "bg-green-600 hover:bg-green-700 text-white font-medium"
+                  }`}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="mt-6">
+            <TestCasesCard />
+          </div>
         </div>
-    );
 
+        {/* Terminal Section */}
+        <div className="flex-1 flex flex-col px-4 py-6 bg-gray-800">
+          <TerminalComponent />
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default Mainpage;
