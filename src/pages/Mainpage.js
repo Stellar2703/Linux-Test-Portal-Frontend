@@ -1,3 +1,4 @@
+
 // import React, { useContext, useState } from "react";
 // import TerminalComponent from "../components/Terminal";
 // import "../Styles/Mainpage.css";
@@ -148,6 +149,7 @@ const Mainpage = () => {
                 <span className="bg-yellow-500 w-3 h-3 rounded-full"></span>
                 <span className="bg-green-500 w-3 h-3 rounded-full"></span>
               </div>
+
             </div>
             <div className="Question bg-gray-700 p-4 rounded-b-lg text-gray-300 shadow">
               <p>{taskArray[currentIndex].description}</p>
