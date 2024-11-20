@@ -132,6 +132,7 @@ const Mainpage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
+      
       <Header />
 
       <div className="flex-grow flex">
