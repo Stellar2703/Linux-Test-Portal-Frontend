@@ -7,6 +7,24 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { setUserData } = useContext(UserContext);
+  const navigate = useNavigate();     
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+          const response = await axios.post('http://localhost:4000/api/login', { User_name: username , Password: password });  
+          console.log('Response Data:', response.data); // Debugging
+          setUserData(response.data); // Save data in context
+          navigate('/main'); // Navigate to Mainpage
+      } catch (error) {
+          console.error(error);
+          alert(error.response?.data?.message || 'Error fetching data');
+      }
+  };
+
 return(
 <div class="flex flex-wrap">
   <div class="flex w-full flex-col md:w-1/2">
@@ -20,19 +38,20 @@ return(
       <div class="relative mt-8 flex h-px place-items-center bg-gray-200">
         <div class="absolute left-1/2 h-6 w-14 -translate-x-1/2 bg-white text-center text-sm text-gray-500">or</div>
       </div>
-      <form class="flex flex-col pt-3 md:pt-8">
+      <form class="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
         <div class="flex flex-col pt-4">
           <div class="focus-within:border-b-gray-500 relative flex overflow-hidden border-b-2 transition">
-            <input type="email" id="login-email" class="w-full flex-1 appearance-none border-gray-300 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="Email" />
+            <input type="email" value={username} onChange={(e) => setUsername(e.target.value)} id="login-email" class="w-full flex-1 appearance-none border-gray-300 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="Email" />
           </div>
         </div>
         <div class="mb-12 flex flex-col pt-4">
           <div class="focus-within:border-b-gray-500 relative flex overflow-hidden border-b-2 transition">
-            <input type="password" id="login-password" class="w-full flex-1 appearance-none border-gray-300 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="Password" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="login-password" class="w-full flex-1 appearance-none border-gray-300 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none" placeholder="Password" />
           </div>
         </div>
         <button type="submit" class="w-full rounded-lg bg-gray-900 px-4 py-2 text-center text-base font-semibold text-white shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2">Log in</button>
       </form>
+       // Debugging
       <div class="py-12 text-center">
         <p class="whitespace-nowrap text-gray-600">
           {/* <a href="#" class="underline-offset-4 font-semibold text-gray-900 underline">Sign up for free.</a> */}
