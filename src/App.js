@@ -6,6 +6,8 @@ import Mainpage from './pages/Mainpage';
 import BookingPage from './pages/BookingPage';
 import Test from './pages/Testpage';
 import { UserProvider } from './components/UserContext';
+import TaskStatus from './pages/TaskStatus';
+import Terminal from './pages/TaskStatus';
 
 function App() {
   useEffect(() => {
@@ -87,11 +89,11 @@ function App() {
       <UserProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Test />} />
+            <Route path="/" element={<Terminal />} />
             <Route path="/main" element={<Mainpage />} />
             <Route path="/booking" element={<BookingPage />} />
             <Route path="/test" element={<Test />} />
-            <Route path="/check-tasks" element={<TaskChecker />} />
+            <Route path="/tasks" element={<Terminal />} />
             <Route path="*" element={<h1>Don't Fool Around</h1>} />
           </Routes>
         </Router>
