@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { UserContext } from './UserProvider'; // Import the UserContext
+import { UserContext } from "../components/UserContext"; // Import the UserContext
 
 const ExecuteScriptComponent = () => {
   const [error, setError] = useState('');
