@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { UserContext } from './UserProvider'; // Import the UserContext
 
 const ExecuteScriptComponent = () => {
-  const [output, setOutput] = useState('');
   const [error, setError] = useState('');
+  const { taskData, setTaskData } = useContext(UserContext); // Access context
 
   const handleExecuteScript = async () => {
     const data = {
@@ -15,11 +16,11 @@ const ExecuteScriptComponent = () => {
 
     try {
       const response = await axios.post('http://localhost:4000/api/execute-script', data);
-      setOutput(response.data.output); // Display script output
+      setTaskData({ output: response.data.output, timestamp: new Date().toISOString() }); // Store output in context
       setError(''); // Clear any previous errors
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to execute script');
-      setOutput(''); // Clear previous output
+      setTaskData({ output: '', error: err.response?.data?.error || 'Failed to execute script' }); // Store error in context
     }
   };
 
@@ -31,7 +32,7 @@ const ExecuteScriptComponent = () => {
       <div style={{ marginTop: '20px' }}>
         <h3>Output:</h3>
         <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '5px' }}>
-          {output || 'No output yet'}
+          {taskData?.output || 'No output yet'}
         </pre>
       </div>
       {error && (

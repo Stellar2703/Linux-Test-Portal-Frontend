@@ -8,6 +8,7 @@ import { UserContext } from "../components/UserContext";
 const Mainpage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { userData } = useContext(UserContext);
+  const { taskData } = useContext(UserContext);
 
   // Extract tasks from userData and convert them into an array
   const taskArray = Object.entries(userData.tasks)
@@ -35,7 +36,6 @@ const Mainpage = () => {
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
       
       <Header />
-
       <div className="flex-grow flex">
         {/* Task Section */}
         <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800 border-r border-gray-700">
@@ -91,6 +91,24 @@ const Mainpage = () => {
         {/* Terminal Section */}
         <div className="flex-1 flex flex-col px-4 py-6 bg-gray-800">
           <TerminalComponent />
+          <div style={{ padding: '20px' }}>
+      <h1>Task Details</h1>
+      {taskData ? (
+        <div>
+          <h3>Output:</h3>
+          <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '5px' }}>
+            {taskData.output || 'No output yet'}
+          </pre>
+          {taskData.timestamp && (
+            <p>
+              <strong>Last Updated:</strong> {new Date(taskData.timestamp).toLocaleString()}
+            </p>
+          )}
+        </div>
+      ) : (
+        <p>No task data available.</p>
+      )}
+    </div>
         </div>
       </div>
 
