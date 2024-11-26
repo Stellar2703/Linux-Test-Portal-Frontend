@@ -91,6 +91,7 @@ function App() {
             <Route path="/main" element={<Mainpage />} />
             <Route path="/booking" element={<BookingPage />} />
             <Route path="/test" element={<Test />} />
+            <Route path="/check-tasks" element={<TaskChecker />} />
             <Route path="*" element={<h1>Don't Fool Around</h1>} />
           </Routes>
         </Router>
