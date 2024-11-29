@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import TestCasesCard from "../components/output";
 import { UserContext } from "../components/UserContext";
+import ExecuteScriptComponent from "./TaskStatus";
 
 const Mainpage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,7 +35,7 @@ const Mainpage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
-      
+
       <Header />
       <div className="flex-grow flex">
         {/* Task Section */}
@@ -59,11 +60,10 @@ const Mainpage = () => {
                 <button
                   onClick={handlePrevious}
                   disabled={currentIndex === 0}
-                  className={`px-4 py-2 rounded-lg ${
-                    currentIndex === 0
+                  className={`px-4 py-2 rounded-lg ${currentIndex === 0
                       ? "bg-gray-600 cursor-not-allowed text-gray-400"
                       : "bg-blue-600 hover:bg-blue-700 text-white font-medium"
-                  }`}
+                    }`}
                 >
                   Previous
                 </button>
@@ -72,11 +72,10 @@ const Mainpage = () => {
                 <button
                   onClick={handleNext}
                   disabled={currentIndex === taskArray.length - 1}
-                  className={`px-4 py-2 rounded-lg ${
-                    currentIndex === taskArray.length - 1
+                  className={`px-4 py-2 rounded-lg ${currentIndex === taskArray.length - 1
                       ? "bg-gray-600 cursor-not-allowed text-gray-400"
                       : "bg-green-600 hover:bg-green-700 text-white font-medium"
-                  }`}
+                    }`}
                 >
                   Next
                 </button>
@@ -91,25 +90,8 @@ const Mainpage = () => {
         {/* Terminal Section */}
         <div className="flex-1 flex flex-col px-4 py-6 bg-gray-800">
           <TerminalComponent />
-          <div style={{ padding: '20px' }}>
-      <h1>Task Details</h1>
-      {taskData ? (
-        <div>
-          <h3>Output:</h3>
-          <pre style={{ background: '#f5f5f5', padding: '10px', borderRadius: '5px' }}>
-            {taskData.output || 'No output yet'}
-          </pre>
-          {taskData.timestamp && (
-            <p>
-              <strong>Last Updated:</strong> {new Date(taskData.timestamp).toLocaleString()}
-            </p>
-          )}
-        </div>
-      ) : (
-        <p>No task data available.</p>
-      )}
-    </div>
-        </div>
+          <ExecuteScriptComponent/>
+          </div>
       </div>
 
       <Footer />
