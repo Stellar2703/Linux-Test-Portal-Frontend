@@ -1,11 +1,19 @@
+import React, { useContext } from "react";
+
 import React from "react";
+
 import CountdownTimer from "./timmer";
-import { useContext } from "react";
+import Pagination from "./pagination";
 import { UserContext } from "../components/UserContext";
 
-function Header() {
+function Header({ currentIndex, setCurrentIndex, totalPages }) {
   const targetDate = new Date("2024-12-31T23:59:59");
   const { userData } = useContext(UserContext);
+
+  // Handle Page Change from Pagination
+  const handlePageChange = (pageNumber) => {
+    setCurrentIndex(pageNumber - 1); // Convert 1-based index to 0-based
+  };
 
   return (
     <header className="top-0 shadow-md px-6 py-4 bg-gray-900 z-10 w-full">
@@ -24,6 +32,15 @@ function Header() {
               {userData.student.register_number}
             </span>
           </h3>
+        </div>
+
+        {/* Center: Pagination */}
+        <div className="flex items-center justify-center flex-grow md:flex-none">
+          <Pagination
+            totalPages={totalPages}
+            activePage={currentIndex + 1}
+            onPageChange={handlePageChange}
+          />
         </div>
 
         {/* Right: Countdown Timer */}
