@@ -5,10 +5,12 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import TestCasesCard from "../components/output";
 import { UserContext } from "../components/UserContext";
+import ExecuteScriptComponent from "./TaskStatus";
 
 const Mainpage = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // State for current task index
   const { userData } = useContext(UserContext);
+  const { taskData } = useContext(UserContext);
 
   // Extract tasks from userData and convert them into an array
   const taskArray = Object.entries(userData.tasks || {})
@@ -63,11 +65,10 @@ const Mainpage = () => {
                  <button
                   onClick={handlePrevious}
                   disabled={currentIndex === 0}
-                  className={`px-4 py-2 rounded-lg ${
-                    currentIndex === 0
+                  className={`px-4 py-2 rounded-lg ${currentIndex === 0
                       ? "bg-gray-600 cursor-not-allowed text-gray-400"
                       : "bg-blue-600 hover:bg-blue-700 text-white font-medium"
-                  }`}
+                    }`}
                 >
                   Previous
                 </button>
@@ -76,11 +77,10 @@ const Mainpage = () => {
                 <button
                   onClick={handleNext}
                   disabled={currentIndex === taskArray.length - 1}
-                  className={`px-4 py-2 rounded-lg ${
-                    currentIndex === taskArray.length - 1
+                  className={`px-4 py-2 rounded-lg ${currentIndex === taskArray.length - 1
                       ? "bg-gray-600 cursor-not-allowed text-gray-400"
                       : "bg-green-600 hover:bg-green-700 text-white font-medium"
-                  }`}
+                    }`}
                 >
                   Next
                 </button>
@@ -95,7 +95,8 @@ const Mainpage = () => {
         {/* Terminal Section */}
         <div className="flex-1 flex flex-col px-4 py-6 bg-gray-800">
           <TerminalComponent />
-        </div>
+          <ExecuteScriptComponent/>
+          </div>
       </div>
 
       <Footer />
