@@ -13,7 +13,7 @@ const TerminalComponent = () => {
       cursorBlink: true,
       cursorStyle: 'bar', // Bar-style cursor
       cols: 80,
-      rows: 30,
+      rows: 20, 
       theme: {
 
         background: '#1e1e1e', // Dark background
@@ -63,7 +63,7 @@ const TerminalComponent = () => {
     };
   }, []);
 
-  return <div ref={terminalRef} style={{ height: '100%', width: '100%' }} />;
+  return <div ref={terminalRef} />;
 };
 
 export default TerminalComponent;

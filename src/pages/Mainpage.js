@@ -37,16 +37,16 @@ const Mainpage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
       {/* Pass Pagination-related props to Header */}
-     <div className="sticky top-0 z-10">
-      <Header
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        totalPages={taskArray.length}
-      />
+      <div className="sticky top-0 z-10">
+        <Header
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          totalPages={taskArray.length}
+        />
       </div>
-      <div className="flex-grow flex">
+      <div className="flex-grow flex  h-[calc(100vh-149px)]">
         {/* Task Section */}
-        <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800 border-r border-gray-700">
+        <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800  ">
           <div className="Task">
             <div className="flex justify-between items-center Task-Num bg-gray-700 text-gray-200 font-semibold py-3 px-4 rounded-t-lg">
               <span className="text-2xl font-bold">
@@ -60,14 +60,14 @@ const Mainpage = () => {
             </div>
             <div className="Question bg-gray-700 p-4 rounded-b-lg text-gray-300 shadow">
               <p>{taskArray[currentIndex]?.description || "No description available"}</p>
-                <div className="buttons flex justify-between mt-4">
-              {/* Previous Button */}
-                 <button
+              <div className="buttons flex justify-between mt-4">
+                {/* Previous Button */}
+                <button
                   onClick={handlePrevious}
                   disabled={currentIndex === 0}
                   className={`px-4 py-2 rounded-lg ${currentIndex === 0
-                      ? "bg-gray-600 cursor-not-allowed text-gray-400"
-                      : "bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                    ? "bg-gray-600 cursor-not-allowed text-gray-400"
+                    : "bg-blue-600 hover:bg-blue-700 text-white font-medium"
                     }`}
                 >
                   Previous
@@ -78,8 +78,8 @@ const Mainpage = () => {
                   onClick={handleNext}
                   disabled={currentIndex === taskArray.length - 1}
                   className={`px-4 py-2 rounded-lg ${currentIndex === taskArray.length - 1
-                      ? "bg-gray-600 cursor-not-allowed text-gray-400"
-                      : "bg-green-600 hover:bg-green-700 text-white font-medium"
+                    ? "bg-gray-600 cursor-not-allowed text-gray-400"
+                    : "bg-green-600 hover:bg-green-700 text-white font-medium"
                     }`}
                 >
                   Next
@@ -88,6 +88,7 @@ const Mainpage = () => {
             </div>
           </div>
           <div className="mt-6">
+            <ExecuteScriptComponent />
             <TestCasesCard />
           </div>
         </div>
@@ -95,8 +96,8 @@ const Mainpage = () => {
         {/* Terminal Section */}
         <div className="flex-1 flex flex-col px-4 py-6 bg-gray-800">
           <TerminalComponent />
-          <ExecuteScriptComponent/>
-          </div>
+
+        </div>
       </div>
 
       <Footer />
