@@ -90,7 +90,7 @@ return (
     <UserProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<ExecuteScriptComponent />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/main" element={<Mainpage />} />
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/test" element={<Test />} />

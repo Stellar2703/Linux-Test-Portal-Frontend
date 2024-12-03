@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import React from "react";
+// import React from "react";
 
 import CountdownTimer from "./timmer";
 import Pagination from "./pagination";
@@ -44,7 +44,7 @@ function Header({ currentIndex, setCurrentIndex, totalPages }) {
         </div>
 
         {/* Right: Countdown Timer */}
-        <div className="text-right bg-gray-800 text-gray-200 font-medium px-3 py-2 rounded-lg shadow-md">
+        <div className="text-right bg-gray-800 text-gray-200 font-medium px-3 rounded-lg shadow-md">
           <CountdownTimer targetDate={targetDate} />
         </div>
       </nav>
