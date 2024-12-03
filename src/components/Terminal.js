@@ -11,13 +11,13 @@ const TerminalComponent = () => {
   useEffect(() => {
     xtermRef.current = new Terminal({
       cursorBlink: true,
-      cursorStyle: 'bar', // Bar-style cursor
+      // cursorStyle: 'bar', // Bar-style cursor
       cols: 80,
       rows: 20, 
       theme: {
 
-        background: '#1e1e1e', // Dark background
-        foreground: '#f5f5f5', // Light gray text
+        background: '#000000', // Dark background
+        foreground: '#ffffff', // Light gray text
         cursor: '#00ff00', // Green cursor
       },
       fontSize: 17, // Slightly larger font
