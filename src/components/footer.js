@@ -2,16 +2,23 @@ import React from "react";
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../components/UserContext";
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 
 const Footer = () => {
   const { userData } = useContext(UserContext);
+  const { taskData } = useContext(UserContext);
   const navigate = useNavigate()
-  console.log('User Data:', userData.systemUser.id); // Debugging
+ 
+  const isAllTasksCompleted = (taskData) => {
+    // Check if all tasks have isSuccess === true
+    return taskData.testCases.every((task) => task.isSuccess) ? 1 : 0;
+  };
+  console.log("Status :",isAllTasksCompleted(taskData))
+  const final_check= isAllTasksCompleted(taskData)+1
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:4000/api/logout', { level_user_id: userData.systemUser.id });
+        const response = await axios.post('http://localhost:4000/api/logout', { level_user_id: userData.systemUser.id, complete:final_check,  reg_no:userData.student.register_number});
         // console.log('Response Data:', response.data); // Debugging
         navigate('/test'); // Navigate to Mainpage
       } catch (error) {
@@ -20,6 +27,10 @@ const Footer = () => {
         navigate('/test'); // Navigate to Mainpage
     }
 };
+console.log('User Data:', userData.systemUser.id); // Debugging
+console.log('complete:', final_check); // Debugging
+console.log('reg_no:', userData.student.register_number); // Debugging
+console.log('User Data:', userData.systemUser.id); // Debugging
   
 
     return (
