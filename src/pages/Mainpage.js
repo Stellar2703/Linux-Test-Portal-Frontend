@@ -1,5 +1,5 @@
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import TerminalComponent from "../components/Terminal";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -8,6 +8,7 @@ import { UserContext } from "../components/UserContext";
 import ExecuteScriptComponent from "./TaskStatus";
 
 const Mainpage = () => {
+
   const [currentIndex, setCurrentIndex] = useState(0); // State for current task index
   const { userData } = useContext(UserContext);
   const { taskData } = useContext(UserContext);

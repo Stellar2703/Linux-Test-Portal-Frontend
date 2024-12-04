@@ -27,6 +27,7 @@ const ExecuteScriptComponent = () => {
         .split('\n') // Split by newline to get each "task:status" pair
         .map((line) => {
           const [task, status] = line.split(':'); // Split by ":"
+          console.log('Test Cases:', testCaseResults); // Debugging
           return {
             task: ` ${task.trim()}`,
             status: status.trim() === '1' ? 'Completed Successfully' : 'Failed',
@@ -38,6 +39,7 @@ const ExecuteScriptComponent = () => {
         output: rawOutput, // Store raw output for reference
         timestamp: new Date().toISOString(),
         testCases: testCaseResults, // Store processed test case results
+        
       });
   
       setError('');
