@@ -13,7 +13,7 @@ const TerminalComponent = () => {
       cursorBlink: true,
       // cursorStyle: 'bar', // Bar-style cursor
       cols: 80,
-      rows: 20, 
+      rows: 27, 
       theme: {
 
         background: '#000000', // Dark background

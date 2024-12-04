@@ -28,7 +28,7 @@ const ExecuteScriptComponent = () => {
         .map((line) => {
           const [task, status] = line.split(':'); // Split by ":"
           return {
-            task: `Task ${task.trim()}`,
+            task: ` ${task.trim()}`,
             status: status.trim() === '1' ? 'Completed Successfully' : 'Failed',
             isSuccess: status.trim() === '1', // Success if status is "1"
           };

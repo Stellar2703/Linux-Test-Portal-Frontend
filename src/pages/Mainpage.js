@@ -44,7 +44,7 @@ const Mainpage = () => {
           totalPages={taskArray.length}
         />
       </div>
-      <div className="flex-grow flex  h-[calc(100vh-149px)]">
+      <div className="flex-grow flex  h-[calc(100vh-165px)]">
         {/* Task Section */}
         <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800  ">
           <div className="Task">
