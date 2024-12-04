@@ -8,7 +8,7 @@ const TestCasesCard = () => {
 
   return (
     <div className="mt-8 flex justify-center w-full">
-      <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg w-full max-w-4xl">
+      <div className="bg-gray-800  rounded-lg shadow-lg w-full max-w-4xl">
         <div className="flex justify-between items-center bg-gray-700 p-4 rounded-t-lg border-b border-gray-600">
           <h2 className="text-gray-200 font-semibold text-xl">Test Case Results</h2>
           <div className="flex space-x-2">

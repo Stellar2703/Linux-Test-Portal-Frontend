@@ -1,10 +1,7 @@
 import React, { useContext } from "react";
-
-// import React from "react";
-
-import CountdownTimer from "./timmer";
+import CountdownTimer from "./Timer";
 import Pagination from "./pagination";
-import { UserContext } from "../components/UserContext";
+import { UserContext } from "./UserContext";
 
 function Header({ currentIndex, setCurrentIndex, totalPages }) {
   const targetDate = new Date();

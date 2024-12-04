@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { FaStopwatch } from "react-icons/fa"; // Import FontAwesome stopwatch icon
 import { useNavigate } from "react-router-dom";
 
 function CountdownTimer({ targetDate }) {
-  const navigate = useNavigate()
-  const calculateTimeLeft = () => {
+  const navigate = useNavigate();
+
+  // Memoize the calculateTimeLeft function using useCallback
+  const calculateTimeLeft = useCallback(() => {
     const now = new Date();
     const difference = targetDate - now;
 
@@ -13,24 +15,26 @@ function CountdownTimer({ targetDate }) {
       minutes: Math.max(Math.floor((difference / (1000 * 60)) % 60), 0),
       seconds: Math.max(Math.floor((difference / 1000) % 60), 0),
     };
-  };
+  }, [targetDate]); // Only recreate the function when targetDate changes
 
+  // State to store the time left
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      setTimeLeft(calculateTimeLeft()); // Update time left every second
     }, 1000);
 
-    return () => clearInterval(timerId); // Cleanup interval
-  }, [targetDate]);
+    return () => clearInterval(timerId); // Cleanup interval on component unmount
+  }, [calculateTimeLeft]); // Now calculateTimeLeft is stable and won't change on every render
 
   useEffect(() => {
     if (!(timeLeft.hours || timeLeft.minutes || timeLeft.seconds)) {
-      navigate('/finish')
+      navigate('/finish'); // Redirect when time is up
     }
-  }, [timeLeft])
+  }, [timeLeft, navigate]); // Add navigate to dependencies
 
+  // Function to pad time to 2 digits (e.g., "01" instead of "1")
   const padTime = (time) => (time < 10 ? `0${time}` : time);
 
   return (
@@ -41,7 +45,7 @@ function CountdownTimer({ targetDate }) {
       </div>
 
       {/* "Time Left" Label */}
-      <div className="text-  text-gray-800">Time Left:</div>
+      <div className="text-gray-800">Time Left:</div>
 
       {/* Time and Labels */}
       <div className="flex flex-col items-center">

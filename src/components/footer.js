@@ -1,63 +1,63 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"
-import { UserContext } from "../components/UserContext";
-import axios from 'axios';
-import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
+import axios from "axios";
+import { useContext } from "react";
 
 const Footer = () => {
-  const { userData } = useContext(UserContext);
-  const { taskData } = useContext(UserContext);
-  const navigate = useNavigate()
- 
-  const isAllTasksCompleted = (taskData) => {
-    // Check if all tasks have isSuccess === true
-    return taskData.testCases.every((task) => task.isSuccess) ? 1 : 0;
+  const { userData, taskData } = useContext(UserContext); // Destructuring both from UserContext
+  const navigate = useNavigate();
+
+  // Check if all tasks are completed
+  const isAllTasksCompleted = (data) => {
+    if (!data || !data.testCases) return 0; // Return 0 if taskData or testCases is not available
+    return data.testCases.every((task) => task.isSuccess) ? 1 : 0;
   };
-  console.log("Status :",isAllTasksCompleted(taskData))
-  const final_check= isAllTasksCompleted(taskData)+1
+
+  const final_check = isAllTasksCompleted(taskData); // Calculate the status for all tasks
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:4000/api/logout', { level_user_id: userData.systemUser.id, complete:final_check,  reg_no:userData.student.register_number});
-        // console.log('Response Data:', response.data); // Debugging
-        navigate('/test'); // Navigate to Mainpage
-      } catch (error) {
-        console.error(error);
-        alert(error.response?.data?.message || 'Error fetching data');
-        navigate('/test'); // Navigate to Mainpage
+      await axios.post("http://localhost:4000/api/logout", {
+        level_user_id: userData?.systemUser?.id,
+        complete: final_check,
+        reg_no: userData?.student?.register_number,
+      });
+
+      navigate("/test"); // Navigate to another page
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Error fetching data");
+      navigate("/test"); // Navigate even if there's an error
     }
+  };
+
+  return (
+    <footer className="sticky bottom-0 py-4 px-8 bg-gray-900 text-gray-200 flex items-center justify-between border-t border-gray-700 shadow-lg">
+      {/* Left Section */}
+      <div>
+        <button
+          onClick={handleSubmit}
+          type="button"
+          className="bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-7 py-2.5 focus:outline-none transition-all duration-300"
+        >
+          Finish
+        </button>
+      </div>
+
+      {/* Center Section */}
+      <div className="text-center">
+        <p className="text-sm font-semibold text-gray-400">
+          Student ID:
+          <span className="text-gray-200"> {userData?.student?.register_number || "N/A"}</span>
+        </p>
+      </div>
+
+      {/* Placeholder for Right Section */}
+      <div className="w-24"></div>
+    </footer>
+  );
 };
-console.log('User Data:', userData.systemUser.id); // Debugging
-console.log('complete:', final_check); // Debugging
-console.log('reg_no:', userData.student.register_number); // Debugging
-console.log('User Data:', userData.systemUser.id); // Debugging
-  
-
-    return (
-      <footer className="sticky bottom-0 py-4 px-8 bg-gray-900 text-gray-200 flex items-center justify-between border-t border-gray-700 shadow-lg">
-        {/* Left Section */}
-        <div>
-          <button
-            onClick={handleSubmit}
-            type="button"
-            className="bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-7 py-2.5 focus:outline-none transition-all duration-300"
-          >
-            Finish
-          </button>
-        </div>
-
-        {/* Center Section */}
-        <div className="text-center ">
-          <p className="text-sm font-semibold text-gray-400">
-            Student ID:
-            <span className="text-gray-200"> 7376231CS345</span>
-          </p>
-        </div>
-
-        <div className="w-24"></div>
-      </footer>
-    );
-  }
-
 
 export default Footer;
