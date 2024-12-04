@@ -7,7 +7,8 @@ import Pagination from "./pagination";
 import { UserContext } from "../components/UserContext";
 
 function Header({ currentIndex, setCurrentIndex, totalPages }) {
-  const targetDate = new Date("2024-12-31T23:59:59");
+  const targetDate = new Date();
+  targetDate.setHours(targetDate.getHours() + 1)
   const { userData } = useContext(UserContext);
 
   // Handle Page Change from Pagination

@@ -88,19 +88,19 @@ const Mainpage = () => {
             </div>
           </div>
           <div className="mt-6">
-           
+                    
             <TestCasesCard />
           </div>
         </div>
 
         {/* Terminal Section */}
         <div className="flex-1 flex flex-col px-4 py-6 bg-gray-800">
-          <TerminalComponent />  
-          <div className="flex py-5 justify-end ">          
-        <ExecuteScriptComponent /> 
-        </div>   
+          <TerminalComponent />
+          <div className="flex py-5 justify-end ">
+            <ExecuteScriptComponent />
+          </div>
         </div>
-        
+
       </div>
 
       <Footer />
