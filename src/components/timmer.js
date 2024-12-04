@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaStopwatch } from "react-icons/fa"; // Import FontAwesome stopwatch icon
+import { useNavigate } from "react-router-dom";
 
 function CountdownTimer({ targetDate }) {
+  const navigate = useNavigate()
   const calculateTimeLeft = () => {
     const now = new Date();
     const difference = targetDate - now;
@@ -22,6 +24,12 @@ function CountdownTimer({ targetDate }) {
 
     return () => clearInterval(timerId); // Cleanup interval
   }, [targetDate]);
+
+  useEffect(() => {
+    if (!(timeLeft.hours || timeLeft.minutes || timeLeft.seconds)) {
+      navigate('/finish')
+    }
+  }, [timeLeft])
 
   const padTime = (time) => (time < 10 ? `0${time}` : time);
 
