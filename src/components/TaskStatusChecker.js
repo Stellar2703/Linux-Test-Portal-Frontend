@@ -8,12 +8,12 @@ import { UserContext } from "./UserContext"; // Import the UserContext
 const ExecuteScriptComponent = () => {
   const [error, setError] = useState('');
   const { taskData, setTaskData } = useContext(UserContext); // Access context
-  
+  const {userData} = useContext(UserContext);
   const handleExecuteScript = async () => {
     const data = {
-      ip: '10.10.237.146',     
-      username: 'master',
-      password: 'master',
+      ip: userData.ip,     
+      username: userData.systemUser.username,
+      password: userData.systemUser.password,
       scriptPath: '/home/master/verify.sh',
     };
   
