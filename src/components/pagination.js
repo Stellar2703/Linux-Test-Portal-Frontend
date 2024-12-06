@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -17,7 +16,7 @@ function Pagination({ totalPages, activePage, onPageChange }) {
         <ul className="flex items-center space-x-2 h-9 text-sm">
           {/* Previous Button */}
           <li>
-            <a
+            <button
               href="#"
               onClick={() => onPageChange(Math.max(activePage - 1, 1))}
               className={`flex items-center justify-center px-3 h-9 text-gray-500 bg-gray-200 rounded-lg hover:bg-gray-300 ${
@@ -26,13 +25,13 @@ function Pagination({ totalPages, activePage, onPageChange }) {
               aria-label="Previous"
             >
               <FaChevronLeft />
-            </a>
+            </button>
           </li>
 
           {/* Page Numbers */}
           {pageNumbers.map((number) => (
             <li key={number}>
-              <a
+              <button
                 href="#"
                 onClick={() => onPageChange(number)}
                 className={`flex items-center justify-center w-9 h-9 rounded-lg ${
@@ -43,13 +42,13 @@ function Pagination({ totalPages, activePage, onPageChange }) {
                 aria-current={activePage === number ? "page" : undefined}
               >
                 {number}
-              </a>
+              </button>
             </li>
           ))}
 
           {/* Next Button */}
           <li>
-            <a
+            <button
               href="#"
               onClick={() => onPageChange(Math.min(activePage + 1, totalPages))}
               className={`flex items-center justify-center px-3 h-9 text-gray-500 bg-gray-200 rounded-lg hover:bg-gray-300 ${
@@ -58,7 +57,7 @@ function Pagination({ totalPages, activePage, onPageChange }) {
               aria-label="Next"
             >
               <FaChevronRight />
-            </a>
+            </button>
           </li>
         </ul>
       </nav>

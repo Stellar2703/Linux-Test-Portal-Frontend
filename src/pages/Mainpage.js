@@ -1,17 +1,15 @@
-
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import TerminalComponent from "../components/Terminal";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import TestCasesCard from "../components/output";
+import TestCasesCard from "../components/TestCasesCard";
 import { UserContext } from "../components/UserContext";
-import ExecuteScriptComponent from "./TaskStatus";
+import ExecuteScriptComponent from "../components/TaskStatusChecker";
 
 const Mainpage = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0); // State for current task index
   const { userData } = useContext(UserContext);
-  const { taskData } = useContext(UserContext);
 
   // Extract tasks from userData and convert them into an array
   const taskArray = Object.entries(userData.tasks || {})
@@ -59,7 +57,7 @@ const Mainpage = () => {
                 <span className="bg-green-500 w-3 h-3 rounded-full"></span>
               </div>
             </div>
-            <div className="Question bg-gray-700 p-4 rounded-b-lg text-gray-300 shadow">
+            <div className="Question bg-gray-900 p-4 rounded-b-lg text-gray-300 shadow">
               <p>{taskArray[currentIndex]?.description || "No description available"}</p>
               <div className="buttons flex justify-between mt-4">
                 {/* Previous Button */}

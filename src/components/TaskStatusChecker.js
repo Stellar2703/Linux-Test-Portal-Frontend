@@ -3,7 +3,7 @@
 
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { UserContext } from "../components/UserContext"; // Import the UserContext
+import { UserContext } from "./UserContext"; // Import the UserContext
 
 const ExecuteScriptComponent = () => {
   const [error, setError] = useState('');
