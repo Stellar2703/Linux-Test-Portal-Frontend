@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";  // Import useNavigate for redirection
 import TerminalComponent from "../components/Terminal";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -7,9 +8,9 @@ import { UserContext } from "../components/UserContext";
 import ExecuteScriptComponent from "../components/TaskStatusChecker";
 
 const Mainpage = () => {
-
   const [currentIndex, setCurrentIndex] = useState(0); // State for current task index
   const { userData } = useContext(UserContext);
+  const navigate = useNavigate();  // To handle navigation
 
   // Extract tasks from userData and convert them into an array
   const taskArray = Object.entries(userData.tasks || {})
@@ -33,6 +34,23 @@ const Mainpage = () => {
     }
   };
 
+  // Listen for visibility changes and navigate to finish page when tab is switched
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        // If the user switches the tab, navigate to the finish page
+        navigate("/finish");  // Navigate to the finish page
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Cleanup event listener when the component unmounts
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [navigate]);  // Empty dependency array means this effect runs once when the component mounts
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
       {/* Pass Pagination-related props to Header */}
@@ -43,9 +61,9 @@ const Mainpage = () => {
           totalPages={taskArray.length}
         />
       </div>
-      <div className="flex-grow flex  h-[calc(100vh-165px)]">
+      <div className="flex-grow flex h-[calc(100vh-165px)]">
         {/* Task Section */}
-        <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800  ">
+        <div className="overflow-auto flex-1 flex flex-col px-4 py-6 bg-gray-800">
           <div className="Task">
             <div className="flex justify-between items-center Task-Num bg-gray-700 text-gray-200 font-semibold py-3 px-4 rounded-t-lg">
               <span className="text-2xl font-bold">
@@ -87,7 +105,6 @@ const Mainpage = () => {
             </div>
           </div>
           <div className="mt-6">
-                    
             <TestCasesCard />
           </div>
         </div>
@@ -99,7 +116,6 @@ const Mainpage = () => {
             <ExecuteScriptComponent />
           </div>
         </div>
-
       </div>
 
       <Footer />
