@@ -31,7 +31,7 @@ const LoginPage = () => {
   const handleSubmit1 = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/login', { User_name: username, Password: password });
+      const response = await axios.post('http://10.30.10.22:4000/api/login', { User_name: username, Password: password });
       console.log('Response Data:', response.data); // Debugging
       setUserData(response.data); // Save data in context
       navigate('/main'); // Navigate to Mainpage

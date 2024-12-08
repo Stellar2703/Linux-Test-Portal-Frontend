@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";  // Import useNavigate for redirection
 import TerminalComponent from "../components/Terminal";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/header";
+import Footer from "../components/footer";
 import TestCasesCard from "../components/TestCasesCard";
 import { UserContext } from "../components/UserContext";
 import ExecuteScriptComponent from "../components/TaskStatusChecker";
