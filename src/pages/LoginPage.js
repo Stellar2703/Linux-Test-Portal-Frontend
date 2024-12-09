@@ -4,7 +4,6 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from '../components/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import { GoogleLogin } from '@react-oauth/google';
 
@@ -34,7 +33,7 @@ const LoginPage = () => {
       const response = await axios.post('http://localhost:4000/api/login', { User_name: username, Password: password });
       console.log('Response Data:', response.data); // Debugging
       setUserData(response.data); // Save data in context
-      navigate('/main'); // Navigate to Mainpage
+      // navigate('/main'); // Navigate to Mainpage
     } catch (error) {
       console.error(error);
       alert(error.response?.data?.message || 'Error fetching data');
