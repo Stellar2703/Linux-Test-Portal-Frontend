@@ -15,7 +15,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (email) => {
     try {
-      const response = await axios.post('http://localhost:4000/api/login', { register_number: email });
+      const response = await axios.post('http://10.30.10.22:4000/api/login', { register_number: email });
       console.log('Response Data:', response.data); // Debugging
       setUserData(response.data); // Save data in context
       navigate('/main'); // Navigate to Mainpage
