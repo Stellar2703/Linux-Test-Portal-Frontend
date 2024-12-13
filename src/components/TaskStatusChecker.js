@@ -18,7 +18,7 @@ const ExecuteScriptComponent = () => {
     };
   
     try {
-      const response = await axios.post('http://10.30.10.22:4000/api/execute-script', data);
+      const response = await axios.post('http://localhost:4000/api/execute-script', data);
   
       // Process the script output into structured test cases
       const rawOutput = response.data.output; // Assuming `output` is the raw text (e.g., "1:0\n2:0\n...")

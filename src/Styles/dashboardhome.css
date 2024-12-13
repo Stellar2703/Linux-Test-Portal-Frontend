@@ -1,0 +1,64 @@
+.dashboard {
+    display: flex;
+    background-color: #f7fafc;
+  }
+  
+  .card {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon-container {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .icon-container:hover {
+    transform: scale(1.1);
+  }
+  
+
+  
+  .text-container p {
+    font-family: 'Inter', sans-serif;
+    color: #4a5568;
+  }
+  
+  .text-container h3 {
+    color: #2d3748;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  @media (min-width: 640px) {
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .grid-cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid-cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  

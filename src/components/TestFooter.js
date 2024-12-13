@@ -89,7 +89,7 @@ const Footer = () => {
     if (!confirm) return; // Cancel the action if the user clicks "Cancel"
 
     try {
-      await axios.post("http://10.30.10.22:4000/api/logout", {
+      await axios.post("http://localhost:4000/api/logout", {
         level_user_id: userData?.systemUser?.id,
         complete: final_check,
         reg_no: userData?.student?.register_number,

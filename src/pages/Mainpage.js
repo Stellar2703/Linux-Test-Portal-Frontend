@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";  // Import useNavigate for redirection
 import TerminalComponent from "../components/Terminal";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../components/TestHeader";
+import Footer from "../components/TestFooter";
 import TestCasesCard from "../components/TestCasesCard";
 import { UserContext } from "../components/UserContext";
 import ExecuteScriptComponent from "../components/TaskStatusChecker";
@@ -34,21 +34,21 @@ const Mainpage = () => {
   };
 
   // Listen for visibility changes and navigate to finish page when tab is switched
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        // If the user switches the tab, navigate to the finish page
-        navigate("/finish");  // Navigate to the finish page
-      }
-    };
+  // useEffect(() => {
+  //   const handleVisibilityChange = () => {
+  //     if (document.visibilityState === "hidden") {
+  //       // If the user switches the tab, navigate to the finish page
+  //       navigate("/finish");  // Navigate to the finish page
+  //     }
+  //   };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+  //   document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Cleanup event listener when the component unmounts
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [navigate]);  // Empty dependency array means this effect runs once when the component mounts
+  //   // Cleanup event listener when the component unmounts
+  //   return () => {
+  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
+  //   };
+  // }, [navigate]);  // Empty dependency array means this effect runs once when the component mounts
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
