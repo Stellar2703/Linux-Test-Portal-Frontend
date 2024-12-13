@@ -14,7 +14,7 @@ const ExecuteScriptComponent = () => {
       ip: userData.ip,     
       username: userData.systemUser.username,
       password: userData.systemUser.password,
-      scriptPath: '/home/{userData.systemUser.username}/verify.sh',
+      scriptPath: `/home/${userData.systemUser.username}/verify.sh`,
     };
   
     try {
