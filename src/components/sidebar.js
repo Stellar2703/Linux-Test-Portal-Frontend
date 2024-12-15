@@ -15,10 +15,10 @@ const Sidebar = () => {
 
     const menuitems = [
         { name: 'Dashboard', icon: <FaUserFriends />, route: "/dashboard" },
+        { name: 'Results', icon: <FaBook />, route: "/result" },
         { name: 'Students', icon: <FaUserFriends />, route: "/students" },
-        { name: 'Completed', icon: <FaBook />, route: "/completed" },
-        { name: 'History', icon: <FaHistory />, route: "/history" },
-        { name: 'Review', icon: <FaCheckCircle />, route: "/review" }, 
+        { name: 'Review', icon: <FaCheckCircle />, route: "/review" },
+        { name: 'Settings', icon: <FaHistory />, route: "/settings" },
     ];
 
     return (
@@ -51,7 +51,7 @@ const Sidebar = () => {
                         <span className="font-medium">Dark Mode</span>
                     </li>
                     <li key="logout">
-                        <Link to="/login" className="flex items-center space-x-3 p-4 rounded-lg text-gray-700 hover:bg-blue-600 hover:text-white transition duration-200">
+                        <Link to="/" className="flex items-center space-x-3 p-4 rounded-lg text-gray-700 hover:bg-blue-600 hover:text-white transition duration-200">
                             <FaPowerOff />
                             <span className="font-medium">Logout</span>
                         </Link>

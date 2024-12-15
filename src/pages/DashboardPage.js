@@ -18,14 +18,13 @@ function Dashboardhome() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('http://localhost:4000/api/dashboard/main');
+                const response = await axios.get('http://localhost:4000/api/dashboard/main');
                 console.log('Response Data:', response.data); // Debugging
                 setChord(response.data); // Update state with response data
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []); // Empty dependency array ensures this runs only once
 

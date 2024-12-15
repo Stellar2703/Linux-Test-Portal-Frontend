@@ -7,6 +7,8 @@ import { UserProvider } from './components/UserContext';
 import ThankYouPage from './pages/SubmitPage';
 import Dashboardhome from './pages/DashboardPage';
 import StudentPage from './pages/StudentPage';
+import ResultPage from './pages/ResultPage';
+import ReviewPage from './pages/ReviewPage';
 
 function App() {
 return (
@@ -20,6 +22,8 @@ return (
           <Route path="/submit" element={<ThankYouPage />} />
           <Route path="/dashboard" element={<Dashboardhome />}/>
           <Route path="/students" element={<StudentPage/>}/>
+          <Route path="/result" element={<ResultPage/>}/>
+          <Route path="/review" element={<ReviewPage/>}/>
           <Route path="*" element={<h1>Don't Fool Around</h1>} />
         </Routes>
       </Router>
