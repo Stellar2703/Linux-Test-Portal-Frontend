@@ -12,7 +12,7 @@ function StudentPage() {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/students', {}); // Adjust URL if needed
+                const response = await axios.get('http://10.30.10.22:4000/api/students', {}); // Adjust URL if needed
                 console.log('Response Data:', response.data); // Debugging
                 setStudents(response.data); // Update state with response data
                 setFilteredStudents(response.data); // Initialize filtered data
@@ -130,7 +130,7 @@ export default StudentPage;
 //     useEffect(() => {
 //         const fetchStudents = async () => {
 //             try {
-//                 const response = await axios.get('http://localhost:4000/api/students', {}); // Adjust URL if needed
+//                 const response = await axios.get('http://10.30.10.22:4000/api/students', {}); // Adjust URL if needed
 //                 console.log('Response Data:', response.data); // Debugging
 //                 setStudents(response.data); // Update state with response data
 //                 setFilteredStudents(response.data); // Initialize filtered data
@@ -158,7 +158,7 @@ export default StudentPage;
 //     // Toggle block status for a student
 //     const toggleBlockStatus = async (id) => {
 //         try {
-//             const response = await axios.post('http://localhost:4000/api/students/toggleBlock', { id });
+//             const response = await axios.post('http://10.30.10.22:4000/api/students/toggleBlock', { id });
 //             if (response.data.success) {
 //                 setStudents((prevStudents) =>
 //                     prevStudents.map((student) =>

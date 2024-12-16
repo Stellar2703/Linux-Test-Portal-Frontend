@@ -12,7 +12,7 @@ function ResultPage() {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/result', {}); // Adjust URL if needed
+                const response = await axios.get('http://10.30.10.22:4000/api/result', {}); // Adjust URL if needed
                 console.log('Response Data:', response.data); // Debugging
                 setStudents(response.data); // Update state with response data
                 setFilteredStudents(response.data); // Initialize filtered data

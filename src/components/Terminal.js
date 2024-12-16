@@ -30,7 +30,7 @@ const TerminalComponent = () => {
     });
     xtermRef.current.open(terminalRef.current);
 
-    socketRef.current = io('http://localhost:4000', { transports: ['websocket'] });
+    socketRef.current = io('http://10.30.10.22:4000', { transports: ['websocket'] });
 
     // Handle data received from the backend
     socketRef.current.on('data', (data) => {
@@ -106,7 +106,7 @@ export default TerminalComponent;
 //     xtermRef.current.open(terminalRef.current);
 
 //     // Initialize socket.io connection
-//     socketRef.current = io('http://localhost:4000', { transports: ['websocket'] });
+//     socketRef.current = io('http://10.30.10.22:4000', { transports: ['websocket'] });
 
 //     // Handle data received from the backend
 //     socketRef.current.on('data', (data) => {
@@ -205,7 +205,7 @@ export default TerminalComponent;
 //       xtermRef.current.open(terminalRef.current);
 
 //       // Initialize socket.io connection
-//       socketRef.current = io('http://localhost:4000', { transports: ['websocket'] });
+//       socketRef.current = io('http://10.30.10.22:4000', { transports: ['websocket'] });
 
 //       // Handle data received from the backend
 //       socketRef.current.on('data', (data) => {
