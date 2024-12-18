@@ -17,7 +17,8 @@ const TerminalComponent = () => {
       cursorBlink: true,
       // cursorStyle: 'bar', // Bar-style cursor
       cols: 80,
-      rows: 27, 
+      rows: 27,
+      scrollback: 5000,
       theme: {
 
         background: '#000000', // Dark background
@@ -57,7 +58,7 @@ const TerminalComponent = () => {
       host: userData.ip,
       port: 22,
       username: userData.systemUser.username,
-      password: userData.systemUser.username, // Replace with secure method
+      password: userData.systemUser.password, // Replace with secure method
     });
 
     // Cleanup
@@ -65,7 +66,7 @@ const TerminalComponent = () => {
       socketRef.current.disconnect();
       xtermRef.current.dispose();
     };
-  }, []);
+  }, [userData.ip, userData.systemUser.username, userData.systemUser.password]);
 
   return <div ref={terminalRef} />;
 };

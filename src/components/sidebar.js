@@ -1,8 +1,6 @@
-
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaUserFriends, FaMapMarkedAlt, FaBook, FaComments, FaHistory, FaMoon, FaPowerOff, FaCheckCircle } from "react-icons/fa";
+import { FaUserFriends, FaBook, FaCheckCircle, FaHistory, FaMoon, FaPowerOff } from "react-icons/fa";
 
 const Sidebar = () => {
     const location = useLocation(); // To get the current URL path
@@ -15,15 +13,15 @@ const Sidebar = () => {
 
     const menuitems = [
         { name: 'Dashboard', icon: <FaUserFriends />, route: "/dashboard" },
-        { name: 'Results', icon: <FaBook />, route: "/result" },
-        { name: 'Students', icon: <FaUserFriends />, route: "/students" },
-        { name: 'Review', icon: <FaCheckCircle />, route: "/review" },
+        { name: 'Results', icon: <FaBook />, route: "/dashboard/result" },
+        { name: 'Students', icon: <FaUserFriends />, route: "/dashboard/students" },
+        { name: 'Review', icon: <FaCheckCircle />, route: "/dashboard/review" },
         { name: 'Settings', icon: <FaHistory />, route: "/settings" },
     ];
 
     return (
-        <div className="w-64 h-full bg-white p-4 flex flex-col justify-between shadow-md">
-            <div h-full>
+        <div className="w-64 h-screen bg-white p-4 flex flex-col justify-between shadow-md">
+            <div className="flex-grow">
                 <nav>
                     <ul className="space-y-2">
                         {menuitems.map((item) => (

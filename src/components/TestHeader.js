@@ -3,15 +3,18 @@ import CountdownTimer from "./Timer";
 import Pagination from "./pagination";
 import { UserContext } from "./UserContext";
 
-function Header({ currentIndex, setCurrentIndex, totalPages }) {
+function Header({ currentIndex, setCurrentIndex, totalPages, setIsSubmitted }) {
   const targetDate = new Date();
-  targetDate.setHours(targetDate.getHours() + 1)
+  // targetDate.setHours(targetDate.getHours() + 1)
+  targetDate.setSeconds(targetDate.getSeconds() + 9)
   const { userData } = useContext(UserContext);
 
   // Handle Page Change from Pagination
   const handlePageChange = (pageNumber) => {
     setCurrentIndex(pageNumber - 1); // Convert 1-based index to 0-based
   };
+
+  
 
   return (
     <header className="top-0 shadow-md px-6 py-4 bg-gray-900 z-10 w-full">
@@ -43,7 +46,7 @@ function Header({ currentIndex, setCurrentIndex, totalPages }) {
 
         {/* Right: Countdown Timer */}
         <div className="text-right bg-gray-800 text-gray-200 font-medium px-3 rounded-lg shadow-md">
-          <CountdownTimer targetDate={targetDate} />
+          <CountdownTimer targetDate={targetDate} setIsSubmitted={setIsSubmitted}/>
         </div>
       </nav>
     </header>

@@ -7,11 +7,25 @@ import TestCasesCard from "../components/TestCasesCard";
 import { UserContext } from "../components/UserContext";
 import ExecuteScriptComponent from "../components/TaskStatusChecker";
 
-const Mainpage = () => {
+const Mainpage = ({ setIsSubmitted }) => {
   const [currentIndex, setCurrentIndex] = useState(0); // State for current task index
   const { userData } = useContext(UserContext);
   const navigate = useNavigate();  // To handle navigation
 
+
+    useEffect(() => {
+      const handlePopState = (event) => {
+        if (event.state && event.state.isSubmitted) {
+          window.history.pushState(null, '', '/submit');
+        }
+      };
+  
+      window.addEventListener('popstate', handlePopState);
+  
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, []);
   // Extract tasks from userData and convert them into an array
   const taskArray = Object.entries(userData.tasks || {})
     .filter(([key]) => key.startsWith("task"))
@@ -34,21 +48,21 @@ const Mainpage = () => {
   };
 
   // Listen for visibility changes and navigate to finish page when tab is switched
-  // useEffect(() => {
-  //   const handleVisibilityChange = () => {
-  //     if (document.visibilityState === "hidden") {
-  //       // If the user switches the tab, navigate to the finish page
-  //       navigate("/finish");  // Navigate to the finish page
-  //     }
-  //   };
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        // If the user switches the tab, navigate to the finish page
+        navigate("/submit");  // Navigate to the finish page
+      }
+    };
 
-  //   document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
-  //   // Cleanup event listener when the component unmounts
-  //   return () => {
-  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
-  //   };
-  // }, [navigate]);  // Empty dependency array means this effect runs once when the component mounts
+    // Cleanup event listener when the component unmounts
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [navigate]);  // Empty dependency array means this effect runs once when the component mounts
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200 font-sans">
@@ -58,6 +72,7 @@ const Mainpage = () => {
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
           totalPages={taskArray.length}
+          setIsSubmitted={setIsSubmitted}
         />
       </div>
       <div className="flex-grow flex h-[calc(100vh-165px)]">
@@ -117,7 +132,7 @@ const Mainpage = () => {
         </div>
       </div>
 
-      <Footer />
+      <Footer setIsSubmitted={setIsSubmitted} />
     </div>
   );
 };

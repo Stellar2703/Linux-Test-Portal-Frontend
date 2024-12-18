@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Sidebar from "../components/sidebar";
 import { FaSearch } from "react-icons/fa";
 
 function ResultPage() {
@@ -39,9 +38,9 @@ function ResultPage() {
 
     return (
         <div className="dashboard flex bg-gray-100 min-h-screen">
-            <div>
+            {/* <div>
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="flex flex-col p-6 w-full lg:w-4/5">
                 <h2 className="text-3xl font-bold text-gray-700 mb-8">Student Details</h2>
 
@@ -61,8 +60,8 @@ function ResultPage() {
 
                 {/* Table */}
                 <div className="shadow-md overflow-x-auto sm:rounded-lg">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table className="w-full text-sm text-left rtl:text-right text-gray-700 ">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">ID</th>
                                 <th scope="col" className="px-6 py-3">Date</th>
@@ -78,7 +77,7 @@ function ResultPage() {
                                 filteredStudents.map((student) => (
                                     <tr
                                         key={student.id}
-                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                        className="bg-white border-b  hover:bg-gray-50 "
                                     >
                                         <td className="px-6 py-4">{student.id}</td>
                                         <td className="px-6 py-4">{student.date}</td>
